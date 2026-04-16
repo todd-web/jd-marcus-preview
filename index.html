@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Adventures of JD & Marcus | Jay Davis</title>
+<meta name="description" content="Bellwood adventures, neighborhood mysteries, and friendship that finds treasure in plain sight. The children's book series by Jay Davis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'jdm-orange': '#F26A1F',
+          'jdm-orange-dark': '#D85510',
+          'jdm-orange-light': '#FFE3CC',
+          'jdm-gold': '#D4A436',
+          'jdm-gold-dark': '#A8822B',
+          'jdm-blue': '#1F4FA8',
+          'jdm-blue-dark': '#163B80',
+          'jdm-blue-light': '#E4EBF8',
+          'jdm-cream': '#FFF8EC',
+          'jdm-cream-dark': '#F5EDDA',
+          'jdm-sky': '#7CC5E8',
+          'jdm-ink': '#0F172A',
+        },
+        fontFamily: {
+          fredoka: ['Fredoka', 'system-ui', 'sans-serif'],
+          nunito: ['Nunito', 'system-ui', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Nunito', system-ui, sans-serif; background: #FFF8EC; color: #0F172A; }
+  h1, h2, h3, h4, .font-fredoka { font-family: 'Fredoka', system-ui, sans-serif; letter-spacing: -0.01em; }
+
+  /* HERO */
+  .hero { position: relative; height: calc(100vh - 72px); min-height: 640px; max-height: 900px; overflow: hidden; }
+  .hero-video {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;
+  }
+  .hero-scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.65) 35%, rgba(15,23,42,0.15) 65%, rgba(15,23,42,0) 100%);
+    z-index: 1;
+  }
+  .hero-content { position: relative; z-index: 2; }
+
+  /* ANNOUNCEMENT PILL */
+  .announcement-pill {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    background: rgba(242,106,31,0.95); color: #fff;
+    font-family: 'Fredoka', sans-serif; font-weight: 600;
+    padding: 0.625rem 1.25rem; border-radius: 999px;
+    font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase;
+    transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+    box-shadow: 0 6px 16px rgba(242,106,31,0.35);
+  }
+  .announcement-pill:hover { background: #D85510; transform: translateY(-1px); box-shadow: 0 10px 22px rgba(242,106,31,0.50); }
+  .announcement-pill .cal-icon { width: 16px; height: 16px; flex-shrink: 0; }
+  .announcement-pill .divider { width: 3px; height: 3px; border-radius: 999px; background: rgba(255,255,255,0.55); flex-shrink: 0; }
+  .announcement-pill .cta { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: rgba(255,255,255,0.55); }
+  @media (max-width: 640px) {
+    .announcement-pill { font-size: 0.72rem; padding: 0.5rem 1rem; }
+    .announcement-pill .pill-location { display: none; }
+  }
+
+  /* BUTTONS */
+  .btn-primary {
+    background: #F26A1F; color: #fff;
+    box-shadow: 0 8px 20px rgba(242,106,31,0.45), inset 0 -3px 0 rgba(0,0,0,0.12);
+    transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+  }
+  .btn-primary:hover { background: #D85510; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(242,106,31,0.55); }
+  .btn-outline-white {
+    background: rgba(255,255,255,0.08); color: #fff; border: 2px solid #fff; backdrop-filter: blur(6px);
+    transition: all 180ms ease;
+  }
+  .btn-outline-white:hover { background: #fff; color: #1F4FA8; }
+  .btn-blue { background: #1F4FA8; color: #fff; box-shadow: 0 6px 16px rgba(31,79,168,0.35); transition: all 180ms ease; }
+  .btn-blue:hover { background: #163B80; transform: translateY(-2px); }
+  .btn-outline-blue { background: transparent; color: #1F4FA8; border: 2px solid #1F4FA8; transition: all 180ms ease; }
+  .btn-outline-blue:hover { background: #1F4FA8; color: #fff; }
+
+  /* NAV */
+  .topnav { background: rgba(255,248,236,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(15,23,42,0.06); }
+  .nav-buybook { background: #F26A1F; color: #fff; box-shadow: 0 4px 10px rgba(242,106,31,0.35); }
+  .nav-buybook:hover { background: #D85510; }
+  .nav-bookj { background: transparent; color: #1F4FA8; border: 2px solid #1F4FA8; }
+  .nav-bookj:hover { background: #1F4FA8; color: #fff; }
+  /* Hamburger (mobile) */
+  .nav-toggle { display: none; }
+  .nav-burger {
+    display: none;
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: transparent;
+    border: 2px solid rgba(15,23,42,0.15);
+    align-items: center; justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: border-color 180ms ease, background 180ms ease;
+  }
+  .nav-burger:hover { border-color: #1F4FA8; background: #E4EBF8; }
+  .nav-burger span {
+    position: relative;
+    display: block;
+    width: 18px; height: 2px;
+    background: #1F4FA8;
+    border-radius: 2px;
+    transition: transform 180ms ease, opacity 180ms ease;
+  }
+  .nav-burger span::before, .nav-burger span::after {
+    content: ""; position: absolute; left: 0;
+    width: 18px; height: 2px; background: #1F4FA8; border-radius: 2px;
+    transition: transform 180ms ease;
+  }
+  .nav-burger span::before { top: -6px; }
+  .nav-burger span::after { top: 6px; }
+  .nav-toggle:checked + .nav-burger span { background: transparent; }
+  .nav-toggle:checked + .nav-burger span::before { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle:checked + .nav-burger span::after { transform: translateY(-6px) rotate(-45deg); }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 72px; left: 0; right: 0;
+    background: #FFF8EC;
+    border-bottom: 1px solid rgba(15,23,42,0.08);
+    box-shadow: 0 10px 30px rgba(15,23,42,0.08);
+    padding: 0.75rem 1.25rem 1.25rem;
+    flex-direction: column;
+    gap: 0.25rem;
+    z-index: 49;
+  }
+  .mobile-menu a {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #0F172A;
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid rgba(15,23,42,0.06);
+    transition: color 180ms ease;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: #F26A1F; }
+  nav:has(.nav-toggle:checked) .mobile-menu { display: flex; }
+  @media (max-width: 1023px) {
+    .nav-burger { display: inline-flex; }
+  }
+  @media (min-width: 1024px) {
+    nav:has(.nav-toggle:checked) .mobile-menu { display: none; }
+  }
+
+  /* BOOK COVERS */
+  .book-card {
+    background: #fff; border-radius: 24px; overflow: hidden;
+    box-shadow: 0 2px 6px rgba(15,23,42,0.08), 0 20px 45px rgba(15,23,42,0.10);
+    transition: transform 260ms ease, box-shadow 260ms ease;
+  }
+  .book-card:hover { transform: translateY(-8px); box-shadow: 0 6px 12px rgba(15,23,42,0.10), 0 30px 60px rgba(15,23,42,0.16); }
+  .book-cover-img { aspect-ratio: 2/3; width: 100%; object-fit: cover; }
+  .book-placeholder {
+    aspect-ratio: 2/3; width: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column;
+    background: linear-gradient(160deg, #1F4FA8 0%, #163B80 50%, #0F172A 100%);
+    color: #D4A436; padding: 2rem;
+  }
+
+  /* FILMSTRIP */
+  .filmstrip {
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  }
+  .filmstrip-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: scroll-strip 60s linear infinite;
+  }
+  .filmstrip:hover .filmstrip-track { animation-play-state: paused; }
+  .filmstrip-item {
+    flex: 0 0 auto;
+    height: 340px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 14px 34px rgba(15,23,42,0.18);
+    background: #0F172A;
+    transition: transform 260ms ease, box-shadow 260ms ease;
+  }
+  .filmstrip-item:hover { transform: translateY(-4px); box-shadow: 0 20px 44px rgba(15,23,42,0.24); }
+  .filmstrip-item img {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    display: block;
+  }
+  @keyframes scroll-strip {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-50% - 10px)); }
+  }
+  @media (max-width: 768px) {
+    .filmstrip-item { height: 230px; }
+    .filmstrip-track { animation-duration: 45s; }
+  }
+
+  /* SPEAKER RATE CARDS */
+  .rate-card {
+    background: #fff; border: 2px solid #E4EBF8; border-radius: 20px; padding: 1.75rem;
+    transition: border-color 200ms ease, transform 200ms ease;
+  }
+  .rate-card:hover { border-color: #F26A1F; transform: translateY(-3px); }
+  .rate-card.featured { border-color: #F26A1F; background: linear-gradient(180deg, #FFF 0%, #FFE3CC 100%); }
+
+  /* FORMS */
+  .form-input, .form-textarea, .form-select {
+    width: 100%; padding: 0.875rem 1rem; border: 2px solid #E4EBF8; border-radius: 14px;
+    background: #fff; font-family: 'Nunito', system-ui, sans-serif; color: #0F172A; font-size: 0.95rem;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+  }
+  .form-input:focus, .form-textarea:focus, .form-select:focus {
+    outline: none; border-color: #F26A1F; box-shadow: 0 0 0 4px rgba(242,106,31,0.12);
+  }
+
+  /* PRESS */
+  .press-logo {
+    font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 1.05rem;
+    letter-spacing: 0.06em; color: #0F172A; opacity: 0.4;
+    transition: opacity 200ms ease, color 200ms ease;
+  }
+  a.press-logo {
+    cursor: pointer;
+    color: #1F4FA8;
+    opacity: 0.85;
+  }
+  a.press-logo:hover { opacity: 1; color: #163B80; }
+  a.press-logo::after {
+    content: "↗";
+    display: inline-block;
+    margin-left: 0.3rem;
+    font-size: 0.78rem;
+    opacity: 0.7;
+    transform: translateY(-1px);
+  }
+
+  /* REDUCED MOTION */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-video { display: none; }
+    .book-card, .rate-card, .btn-primary, .btn-blue, .announcement-pill { transition: none; }
+    .filmstrip-track { animation: none; }
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ======= NAV ======= -->
+<nav class="topnav fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 py-3">
+    <a href="#" class="flex items-center gap-3 shrink-0">
+      <img src="assets/title-treatment.png" alt="JD & Marcus" class="h-10 md:h-12 w-auto">
+    </a>
+    <div class="hidden lg:flex items-center gap-7 font-fredoka text-jdm-ink font-medium">
+      <a href="#series" class="hover:text-jdm-orange transition">The Series</a>
+      <a href="#about" class="hover:text-jdm-orange transition">About Jay</a>
+      <a href="#gallery" class="hover:text-jdm-orange transition">Gallery</a>
+      <a href="#educators" class="hover:text-jdm-orange transition">For Educators</a>
+    </div>
+    <div class="flex items-center gap-2 md:gap-3 shrink-0">
+      <a href="#booking" class="nav-bookj px-3.5 py-2 md:px-5 md:py-2.5 rounded-full font-fredoka font-semibold text-xs md:text-sm whitespace-nowrap hidden sm:inline-flex">Book Jay to Speak</a>
+      <a href="#series" class="nav-buybook px-3.5 py-2 md:px-5 md:py-2.5 rounded-full font-fredoka font-semibold text-xs md:text-sm whitespace-nowrap">Buy the Book</a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="nav-burger" aria-label="Open navigation menu">
+        <span></span>
+      </label>
+    </div>
+  </div>
+  <div class="mobile-menu" role="navigation">
+    <a href="#series">The Series</a>
+    <a href="#about">About Jay</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#educators">For Educators</a>
+    <a href="#booking">Book Jay to Speak</a>
+  </div>
+</nav>
+
+<!-- ======= HERO ======= -->
+<section class="hero mt-[72px]">
+  <video class="hero-video" autoplay muted loop playsinline poster="assets/book3-cover.jpg">
+    <source src="assets/hero-video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+
+  <div class="hero-content h-full max-w-7xl mx-auto px-6 flex items-center">
+    <div class="max-w-2xl">
+      <a href="assets/book-3-launch.ics" download="JD-Marcus-Book-3-Launch.ics" class="announcement-pill mb-6" aria-label="Download calendar invite for Book 3 launch at Bellwood Public Library">
+        <svg class="cal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        <span>Book 3 Launch 2026</span>
+        <span class="divider"></span>
+        <span class="pill-location">Bellwood Public Library</span>
+        <span class="divider pill-location"></span>
+        <span class="cta">Add to Calendar</span>
+      </a>
+      <h1 class="font-fredoka font-bold text-white text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-5">
+        The Secrets<br>Beyond Linden Avenue
+      </h1>
+      <p class="font-nunito text-white/90 text-lg md:text-xl max-w-xl mb-8 leading-relaxed">
+        Bellwood adventures, neighborhood mysteries, and friendship that finds treasure in plain sight. The children's book series by author Jay Davis.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 items-start">
+        <a href="#series" class="btn-primary px-8 py-4 rounded-full font-fredoka font-bold text-base">
+          Buy the Book →
+        </a>
+        <a href="#booking" class="btn-outline-white px-8 py-4 rounded-full font-fredoka font-bold text-base">
+          Book Jay to Speak
+        </a>
+      </div>
+      <div class="flex items-center gap-3 mt-8 text-white/80 text-sm font-nunito">
+        <div class="flex -space-x-2">
+          <div class="w-8 h-8 rounded-full bg-jdm-gold border-2 border-white"></div>
+          <div class="w-8 h-8 rounded-full bg-jdm-orange border-2 border-white"></div>
+          <div class="w-8 h-8 rounded-full bg-jdm-blue border-2 border-white"></div>
+        </div>
+        <span><strong class="text-white">650+</strong> young readers and growing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= THE SERIES ======= -->
+<section id="series" class="pt-16 pb-20 md:pt-20 md:pb-28 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-14">
+      <p class="font-fredoka font-semibold text-jdm-orange uppercase tracking-widest text-sm mb-3">The Series</p>
+      <h2 class="font-fredoka font-bold text-jdm-ink text-4xl md:text-5xl mb-4">Three Books. One Neighborhood. Endless Adventure.</h2>
+      <p class="font-nunito text-jdm-ink/75 max-w-2xl mx-auto text-lg">Best friends JD and Marcus explore their Bellwood neighborhood, solving mysteries that celebrate friendship, courage, and community. Perfect for readers ages 7-12.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Book 1 -->
+      <div class="book-card flex flex-col">
+        <div class="book-placeholder">
+          <p class="font-fredoka font-bold text-3xl text-center leading-tight mb-2">The<br>Adventures of<br>JD &amp; Marcus</p>
+          <p class="font-fredoka text-jdm-gold/80 text-sm mt-3 uppercase tracking-widest">Book 1</p>
+          <p class="font-nunito text-white/60 text-xs mt-6 italic text-center">Cover image coming soon</p>
+        </div>
+        <div class="p-6 flex-1 flex flex-col">
+          <p class="font-fredoka font-semibold text-jdm-orange text-xs uppercase tracking-widest mb-2">Book One</p>
+          <h3 class="font-fredoka font-bold text-jdm-ink text-xl mb-3 leading-tight">The Adventures of JD &amp; Marcus</h3>
+          <p class="font-nunito text-jdm-ink/75 text-sm mb-5 flex-1">A shy kid moves to a new neighborhood and is pulled into nonstop adventures by his bold new best friend. The story that started it all.</p>
+          <div class="flex gap-2">
+            <a href="https://www.amazon.com/Adventures-JD-Marcus-Jay-Davis/dp/B0F7GDD6VL" target="_blank" rel="noopener" class="btn-primary flex-1 text-center px-4 py-2.5 rounded-full font-fredoka font-semibold text-sm">Buy Now</a>
+            <a href="https://www.amazon.com/Adventures-JD-Marcus-Jay-Davis-ebook/dp/B0F733WWH4" target="_blank" rel="noopener" class="btn-outline-blue flex-1 text-center px-4 py-2.5 rounded-full font-fredoka font-semibold text-sm">Preview</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 2 -->
+      <div class="book-card flex flex-col">
+        <div class="book-placeholder">
+          <p class="font-fredoka font-bold text-3xl text-center leading-tight mb-2">The<br>Secrets of<br>Linden Avenue</p>
+          <p class="font-fredoka text-jdm-gold/80 text-sm mt-3 uppercase tracking-widest">Book 2</p>
+          <p class="font-nunito text-white/60 text-xs mt-6 italic text-center">Cover image coming soon</p>
+        </div>
+        <div class="p-6 flex-1 flex flex-col">
+          <p class="font-fredoka font-semibold text-jdm-orange text-xs uppercase tracking-widest mb-2">Book Two</p>
+          <h3 class="font-fredoka font-bold text-jdm-ink text-xl mb-3 leading-tight">The Secrets of Linden Avenue</h3>
+          <p class="font-nunito text-jdm-ink/75 text-sm mb-5 flex-1">A time-capsule scavenger hunt pulls the boys into riddles, clues, and a hidden legacy that tests their teamwork and courage.</p>
+          <div class="flex gap-2">
+            <a href="https://www.amazon.com/Adventures-JD-Marcus-Secrets-Linden/dp/B0FMNMS1RV" target="_blank" rel="noopener" class="btn-primary flex-1 text-center px-4 py-2.5 rounded-full font-fredoka font-semibold text-sm">Buy Now</a>
+            <a href="https://www.amazon.com/Adventures-JD-Marcus-Secrets-Linden-ebook/dp/B0FLX44DL6" target="_blank" rel="noopener" class="btn-outline-blue flex-1 text-center px-4 py-2.5 rounded-full font-fredoka font-semibold text-sm">Preview</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 3 FEATURED -->
+      <div class="book-card flex flex-col relative ring-4 ring-jdm-orange/30">
+        <div class="absolute -top-3 right-6 bg-jdm-orange text-white font-fredoka font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg z-10">Brand New</div>
+        <img src="assets/book3-cover.jpg" alt="The Secrets Beyond Linden Avenue — Book 3" class="book-cover-img">
+        <div class="p-6 flex-1 flex flex-col">
+          <p class="font-fredoka font-semibold text-jdm-orange text-xs uppercase tracking-widest mb-2">Book Three</p>
+          <h3 class="font-fredoka font-bold text-jdm-ink text-xl mb-3 leading-tight">The Secrets Beyond Linden Avenue</h3>
+          <p class="font-nunito text-jdm-ink/75 text-sm mb-5 flex-1">The adventure scales beyond the neighborhood. Hidden messages, forgotten history, and a puzzle that may change Bellwood forever.</p>
+          <div class="flex gap-2">
+            <a href="https://www.amazon.com/dp/B0FHZVHHZ1" target="_blank" rel="noopener" class="btn-primary flex-1 text-center px-4 py-2.5 rounded-full font-fredoka font-semibold text-sm">Buy the Book</a>
+            <a href="https://www.amazon.com/dp/B0FHZVHHZ1" target="_blank" rel="noopener" class="btn-outline-blue flex-1 text-center px-4 py-2.5 rounded-full font-fredoka font-semibold text-sm">Preview</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-12">
+      <p class="font-nunito text-jdm-ink/60 text-sm">Available through Amazon, IngramSpark, and direct from the author. Ask your local library or bookstore to order.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======= ABOUT JAY (MEET J) ======= -->
+<section id="about" class="pt-12 pb-12 md:pt-16 md:pb-16 bg-jdm-cream">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-10 md:gap-12 items-center">
+    <div class="md:col-span-5">
+      <img src="assets/jay-and-books-clean.png" alt="Jay Davis with his JD &amp; Marcus books" class="w-full max-w-md mx-auto" style="filter: drop-shadow(0 28px 40px rgba(15,23,42,0.28));">
+    </div>
+    <div class="md:col-span-7">
+      <p class="font-fredoka font-semibold text-jdm-orange uppercase tracking-widest text-sm mb-2">The Author</p>
+      <h2 class="font-fredoka font-bold text-jdm-ink text-4xl md:text-5xl mb-5 leading-tight">Meet Jay Davis</h2>
+
+      <div class="inline-flex items-center gap-3 bg-jdm-blue text-white font-fredoka font-semibold px-5 py-2.5 rounded-full mb-5 text-sm">
+        <span class="text-jdm-gold text-lg">★</span>
+        Key to the City of Bellwood
+      </div>
+
+      <div class="space-y-4 font-nunito text-jdm-ink/85 text-lg leading-relaxed mb-7">
+        <p>Jay Davis is a writer, producer, filmmaker, and children's author from Bellwood, Illinois. He's the creator of <em>The Adventures of JD &amp; Marcus</em>, a children's series inspired by his real-life childhood on Linden Avenue.</p>
+        <p>Beyond the books, Jay is the creator of <strong>Creative Hustle</strong> on TUBI, founder of <strong>Chicago IndieCon</strong>, and creator of the <strong>Bernie Mac Lifetime Achievement Award</strong>. His work has been featured on FOX, NBC Chicago, REEL Chicago, and the Chicago Sun-Times.</p>
+        <p>Through school visits and community events, Jay invites young readers to dream big, ask questions, and embrace their creativity.</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-4 mb-7">
+        <div class="text-center p-4 bg-white rounded-2xl shadow-sm">
+          <p class="font-fredoka font-bold text-jdm-orange text-3xl">650+</p>
+          <p class="font-nunito text-jdm-ink/70 text-xs uppercase tracking-wider mt-1">Books Sold</p>
+        </div>
+        <div class="text-center p-4 bg-white rounded-2xl shadow-sm">
+          <p class="font-fredoka font-bold text-jdm-blue text-3xl">3</p>
+          <p class="font-nunito text-jdm-ink/70 text-xs uppercase tracking-wider mt-1">Books in Series</p>
+        </div>
+        <div class="text-center p-4 bg-white rounded-2xl shadow-sm">
+          <p class="font-fredoka font-bold text-jdm-gold-dark text-3xl">★</p>
+          <p class="font-nunito text-jdm-ink/70 text-xs uppercase tracking-wider mt-1">Key to Bellwood</p>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-3">
+        <a href="#booking" class="btn-primary px-6 py-3 rounded-full font-fredoka font-semibold text-sm">Book Jay to Speak</a>
+        <a href="https://jaydavisfilms.com" target="_blank" rel="noopener" class="btn-outline-blue px-6 py-3 rounded-full font-fredoka font-semibold text-sm">Visit Jay Davis Films</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= BEHIND THE SERIES ======= -->
+<section id="gallery" class="pt-14 pb-20 md:pt-16 md:pb-24 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-10">
+      <p class="font-fredoka font-semibold text-jdm-orange uppercase tracking-widest text-sm mb-2">Behind the Series</p>
+      <h2 class="font-fredoka font-bold text-jdm-ink text-4xl md:text-5xl mb-4">From the Last Launch</h2>
+      <p class="font-nunito text-jdm-ink/75 max-w-2xl mx-auto text-lg">Scenes from <em>The Secrets of Linden Avenue</em> launch and community events. Families, educators, and local leaders showing up for young readers.</p>
+    </div>
+
+    <div class="filmstrip">
+      <div class="filmstrip-track">
+        <div class="filmstrip-item"><img src="assets/launch/P1064891.jpeg" alt="Mayor Andre F. Harvey holds JD & Marcus books"></div>
+        <div class="filmstrip-item"><img src="assets/launch/IMG_1534.jpeg" alt="Community leaders with the books"></div>
+        <div class="filmstrip-item"><img src="assets/launch/IMG_3223.png" alt="Jay Davis at the book launch"></div>
+        <div class="filmstrip-item"><img src="assets/launch/IMG_7878.jpeg" alt="Young reader with Jay and a JD & Marcus tote bag"></div>
+        <div class="filmstrip-item"><img src="assets/launch/IMG_9289.jpeg" alt="Family at the book launch"></div>
+        <div class="filmstrip-item"><img src="assets/launch/65BDF6F2-0D64-4366-9A2C-9EAEBA756C32.jpeg" alt="Family with Jay Davis"></div>
+        <div class="filmstrip-item"><img src="assets/launch/IMG_0041.jpeg" alt="Readers at the launch"></div>
+        <div class="filmstrip-item"><img src="assets/launch/6841284284932791831.jpeg" alt="Young fans with Jay"></div>
+        <div class="filmstrip-item" aria-hidden="true"><img src="assets/launch/P1064891.jpeg" alt=""></div>
+        <div class="filmstrip-item" aria-hidden="true"><img src="assets/launch/IMG_1534.jpeg" alt=""></div>
+        <div class="filmstrip-item" aria-hidden="true"><img src="assets/launch/IMG_3223.png" alt=""></div>
+        <div class="filmstrip-item" aria-hidden="true"><img src="assets/launch/IMG_7878.jpeg" alt=""></div>
+        <div class="filmstrip-item" aria-hidden="true"><img src="assets/launch/IMG_9289.jpeg" alt=""></div>
+        <div class="filmstrip-item" aria-hidden="true"><img src="assets/launch/65BDF6F2-0D64-4366-9A2C-9EAEBA756C32.jpeg" alt=""></div>
+        <div class="filmstrip-item" aria-hidden="true"><img src="assets/launch/IMG_0041.jpeg" alt=""></div>
+        <div class="filmstrip-item" aria-hidden="true"><img src="assets/launch/6841284284932791831.jpeg" alt=""></div>
+      </div>
+    </div>
+
+    <div class="mt-8 p-6 bg-jdm-blue-light rounded-2xl flex items-center gap-4 max-w-3xl mx-auto">
+      <div class="w-12 h-12 rounded-full bg-jdm-blue flex items-center justify-center text-jdm-gold text-2xl flex-shrink-0">★</div>
+      <p class="font-nunito text-jdm-ink/85 text-sm md:text-base">
+        <strong class="font-fredoka text-jdm-blue">Bellwood endorses the series.</strong>
+        Mayor Andre F. Harvey has personally supported Jay's work, and the City of Bellwood awarded him the Key to the City.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ======= PRESS ======= -->
+<section class="py-14 bg-jdm-cream border-y border-jdm-ink/10">
+  <div class="max-w-7xl mx-auto px-6">
+    <p class="text-center font-fredoka font-semibold text-jdm-ink/60 uppercase tracking-widest text-sm mb-8">Featured In &amp; Covered By</p>
+    <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-4">
+      <a href="https://www.bellwoodlibrary.org/adventures-jd-marcus-secrets-linden-avenue-book-release" target="_blank" rel="noopener" class="press-logo">BELLWOOD PUBLIC LIBRARY</a>
+      <a href="https://thetimesweekly.com/2026/02/chicago-indiecon-returns-for-its-third-year-celebrating-independent-film-acting-and-industry-access-at-hollywood-blvd-cinema-in-woodridge/" target="_blank" rel="noopener" class="press-logo">THE TIMES WEEKLY</a>
+      <a href="https://filmfreeway.com/ChicagoIndieCon" target="_blank" rel="noopener" class="press-logo">CHICAGO INDIECON</a>
+      <a href="https://jaydavisfilms.com" target="_blank" rel="noopener" class="press-logo">JAY DAVIS FILMS</a>
+      <span class="press-logo">FOX CHICAGO</span>
+      <span class="press-logo">NBC CHICAGO</span>
+      <span class="press-logo">REEL CHICAGO</span>
+      <span class="press-logo">CHICAGO SUN-TIMES</span>
+      <span class="press-logo">TUBI</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FOR EDUCATORS ======= -->
+<section id="educators" class="py-20 md:py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="bg-gradient-to-br from-jdm-blue to-jdm-blue-dark rounded-3xl p-10 md:p-16 text-white grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="font-fredoka font-semibold text-jdm-gold uppercase tracking-widest text-sm mb-3">For Schools &amp; Libraries</p>
+        <h2 class="font-fredoka font-bold text-4xl md:text-5xl mb-5 leading-tight">Bring JD &amp; Marcus into Your Classroom</h2>
+        <p class="font-nunito text-white/90 text-lg leading-relaxed mb-6">The series supports reading comprehension, critical thinking, social-emotional learning, and cultural representation. Perfect for grades 2-6, reading circles, after-school programs, and summer learning kits.</p>
+        <ul class="space-y-2 font-nunito text-white/90 mb-8">
+          <li class="flex items-start gap-2"><span class="text-jdm-gold mt-1">✓</span><span>Bulk pricing from 20% off (10+ copies) up to 30% off (50+ copies)</span></li>
+          <li class="flex items-start gap-2"><span class="text-jdm-gold mt-1">✓</span><span>Purchase orders accepted from school districts and libraries</span></li>
+          <li class="flex items-start gap-2"><span class="text-jdm-gold mt-1">✓</span><span>Companion workbooks and ISBE-aligned unit plan available</span></li>
+          <li class="flex items-start gap-2"><span class="text-jdm-gold mt-1">✓</span><span>Author visits and virtual readings bookable through this site</span></li>
+        </ul>
+        <div class="flex flex-wrap gap-3">
+          <a href="assets/JD-Marcus-Educator-One-Sheet.pdf" target="_blank" rel="noopener" class="btn-primary px-6 py-3 rounded-full font-fredoka font-semibold text-sm">Download Educator One-Sheet (PDF)</a>
+          <a href="#booking" class="btn-outline-white px-6 py-3 rounded-full font-fredoka font-semibold text-sm">Request a School Visit</a>
+        </div>
+      </div>
+      <div class="bg-white/10 border border-white/20 rounded-2xl p-8 backdrop-blur-sm">
+        <p class="font-fredoka font-semibold text-jdm-gold uppercase tracking-widest text-xs mb-4">Bulk Pricing</p>
+        <div class="space-y-3">
+          <div class="flex justify-between items-center pb-3 border-b border-white/15">
+            <span class="font-nunito">10-24 copies</span>
+            <span class="font-fredoka font-bold text-xl text-jdm-gold">20% off</span>
+          </div>
+          <div class="flex justify-between items-center pb-3 border-b border-white/15">
+            <span class="font-nunito">25-49 copies</span>
+            <span class="font-fredoka font-bold text-xl text-jdm-gold">25% off</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="font-nunito">50+ copies</span>
+            <span class="font-fredoka font-bold text-xl text-jdm-gold">30% off</span>
+          </div>
+        </div>
+        <p class="font-nunito text-white/70 text-xs mt-5 italic">Custom pricing available for district-wide adoptions. POs welcome.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= SPEAKER BOOKING ======= -->
+<section id="booking" class="py-20 md:py-28 bg-jdm-cream">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <p class="font-fredoka font-semibold text-jdm-orange uppercase tracking-widest text-sm mb-3">Book Jay to Speak</p>
+      <h2 class="font-fredoka font-bold text-jdm-ink text-4xl md:text-5xl mb-4 leading-tight">Author Visits, Assemblies &amp; Readings</h2>
+      <p class="font-nunito text-jdm-ink/75 max-w-2xl mx-auto text-lg">Jay brings warmth, humor, and real storytelling energy to schools, libraries, and community events. Every visit inspires kids to dream, write, and lead.</p>
+    </div>
+
+    <!-- Event type options -->
+    <div class="grid md:grid-cols-4 gap-4 mb-12">
+      <div class="rate-card text-center">
+        <div class="w-14 h-14 mx-auto rounded-full bg-jdm-orange-light flex items-center justify-center mb-4">
+          <svg class="w-7 h-7 text-jdm-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        </div>
+        <p class="font-fredoka font-bold text-jdm-ink text-xl mb-2">Classroom Visit</p>
+        <p class="font-nunito text-jdm-ink/70 text-sm">Single classroom read &amp; Q&amp;A, 45-60 minutes.</p>
+      </div>
+      <div class="rate-card featured text-center">
+        <div class="w-14 h-14 mx-auto rounded-full bg-white flex items-center justify-center mb-4">
+          <svg class="w-7 h-7 text-jdm-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        </div>
+        <p class="font-fredoka font-bold text-jdm-ink text-xl mb-2">School Assembly</p>
+        <p class="font-nunito text-jdm-ink/70 text-sm">Full-school reading and talk, all ages together.</p>
+      </div>
+      <div class="rate-card text-center">
+        <div class="w-14 h-14 mx-auto rounded-full bg-jdm-blue-light flex items-center justify-center mb-4">
+          <svg class="w-7 h-7 text-jdm-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+        </div>
+        <p class="font-fredoka font-bold text-jdm-ink text-xl mb-2">Library Event</p>
+        <p class="font-nunito text-jdm-ink/70 text-sm">Public library reading, signing, and community meet.</p>
+      </div>
+      <div class="rate-card text-center">
+        <div class="w-14 h-14 mx-auto rounded-full bg-jdm-cream-dark flex items-center justify-center mb-4">
+          <svg class="w-7 h-7 text-jdm-gold-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        </div>
+        <p class="font-fredoka font-bold text-jdm-ink text-xl mb-2">Creative Residency</p>
+        <p class="font-nunito text-jdm-ink/70 text-sm">Multi-day residency with writing workshops.</p>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-jdm-ink/5">
+      <h3 class="font-fredoka font-bold text-jdm-ink text-2xl mb-2">Request a Booking</h3>
+      <p class="font-nunito text-jdm-ink/70 mb-8">Fill this out and Jay will get back to you personally within 2 business days.</p>
+
+      <form class="grid md:grid-cols-2 gap-5">
+        <div>
+          <label class="block font-fredoka font-semibold text-jdm-ink text-sm mb-1.5">Your Name</label>
+          <input type="text" class="form-input" placeholder="Jane Educator">
+        </div>
+        <div>
+          <label class="block font-fredoka font-semibold text-jdm-ink text-sm mb-1.5">Email</label>
+          <input type="email" class="form-input" placeholder="you@school.edu">
+        </div>
+        <div>
+          <label class="block font-fredoka font-semibold text-jdm-ink text-sm mb-1.5">Organization</label>
+          <input type="text" class="form-input" placeholder="School, library, org name">
+        </div>
+        <div>
+          <label class="block font-fredoka font-semibold text-jdm-ink text-sm mb-1.5">Role</label>
+          <input type="text" class="form-input" placeholder="Teacher, Librarian, PTA, etc.">
+        </div>
+        <div>
+          <label class="block font-fredoka font-semibold text-jdm-ink text-sm mb-1.5">Event Type</label>
+          <select class="form-select">
+            <option>Classroom visit</option>
+            <option>School assembly</option>
+            <option>Library event</option>
+            <option>Residency (multi-day)</option>
+            <option>Community event</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-fredoka font-semibold text-jdm-ink text-sm mb-1.5">Audience Size</label>
+          <select class="form-select">
+            <option>Under 30 (single classroom)</option>
+            <option>30-100 (grade-level)</option>
+            <option>100-300 (school-wide)</option>
+            <option>300+ (full assembly)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-fredoka font-semibold text-jdm-ink text-sm mb-1.5">Preferred Date(s)</label>
+          <input type="text" class="form-input" placeholder="e.g. Week of May 12 or flexible">
+        </div>
+        <div>
+          <label class="block font-fredoka font-semibold text-jdm-ink text-sm mb-1.5">Approximate Budget</label>
+          <select class="form-select">
+            <option>Under $500</option>
+            <option>$500 - $1,000</option>
+            <option>$1,000 - $2,500</option>
+            <option>$2,500+</option>
+            <option>Flexible / Let's discuss</option>
+          </select>
+        </div>
+        <div class="md:col-span-2">
+          <label class="block font-fredoka font-semibold text-jdm-ink text-sm mb-1.5">Tell Jay about your event</label>
+          <textarea rows="4" class="form-textarea" placeholder="Age group, theme, goals, any details that matter..."></textarea>
+        </div>
+        <div class="md:col-span-2 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p class="font-nunito text-jdm-ink/60 text-xs">Jay personally reviews every request. No automated replies.</p>
+          <button type="button" class="btn-primary px-10 py-4 rounded-full font-fredoka font-bold text-base w-full sm:w-auto">Send Request →</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FOOTER ======= -->
+<footer class="bg-jdm-ink text-white">
+  <div class="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-4 gap-10 text-center md:text-left">
+    <div class="md:col-span-2 flex flex-col items-center md:items-start">
+      <img src="assets/title-treatment.png" alt="The Adventures of JD & Marcus" class="h-16 w-auto mb-5">
+      <p class="font-nunito text-white/70 text-sm leading-relaxed max-w-sm">Bellwood adventures, neighborhood mysteries, and friendship that finds treasure in plain sight. A children's book series by Jay Davis.</p>
+    </div>
+    <div>
+      <p class="font-fredoka font-semibold text-jdm-gold uppercase tracking-widest text-xs mb-4">Explore</p>
+      <ul class="space-y-2 font-nunito text-sm">
+        <li><a href="#series" class="text-white/80 hover:text-white transition">The Series</a></li>
+        <li><a href="#about" class="text-white/80 hover:text-white transition">About Jay</a></li>
+        <li><a href="#gallery" class="text-white/80 hover:text-white transition">Gallery</a></li>
+        <li><a href="#educators" class="text-white/80 hover:text-white transition">For Educators</a></li>
+        <li><a href="#booking" class="text-white/80 hover:text-white transition">Book Jay to Speak</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-fredoka font-semibold text-jdm-gold uppercase tracking-widest text-xs mb-4">Connect</p>
+      <ul class="space-y-2 font-nunito text-sm">
+        <li><a href="https://www.instagram.com/jaydavisproductions/" target="_blank" rel="noopener" class="text-white/80 hover:text-white transition">Instagram</a></li>
+        <li><a href="https://www.facebook.com/jay.davistp/" target="_blank" rel="noopener" class="text-white/80 hover:text-white transition">Facebook</a></li>
+        <li><a href="https://www.threads.com/@jaydavistp" target="_blank" rel="noopener" class="text-white/80 hover:text-white transition">Threads</a></li>
+        <li><a href="https://jaydavisfilms.com" target="_blank" rel="noopener" class="text-white/80 hover:text-white transition">Jay Davis Films</a></li>
+        <li><a href="mailto:jaydavisfilmsllc@gmail.com" class="text-white/80 hover:text-white transition">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-center md:justify-between gap-3 text-xs font-nunito text-white/60 text-center md:text-left">
+      <p>&copy; 2026 Jay Davis Films, LLC. All rights reserved.</p>
+      <p>Bellwood, IL · Built with love for young readers</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

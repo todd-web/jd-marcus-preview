@@ -1,0 +1,35 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//JD and Marcus//Book 3 Launch 2026//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/Chicago
+BEGIN:STANDARD
+DTSTART:20251102T020000
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0600
+TZNAME:CST
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:20260308T020000
+TZOFFSETFROM:-0600
+TZOFFSETTO:-0500
+TZNAME:CDT
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:book3-launch-2026-04-25@jdandmarcus.com
+DTSTAMP:20260416T180000Z
+DTSTART;TZID=America/Chicago:20260425T130000
+DTEND;TZID=America/Chicago:20260425T150000
+SUMMARY:JD & Marcus Book 3 Launch - The Secrets Beyond Linden Avenue
+DESCRIPTION:Author Jay Davis celebrates the release of The Secrets Beyond Linden Avenue\, Book 3 in The Adventures of JD & Marcus series. Live reading\, meet-and-greet\, book signings\, and refreshments. Free and open to all ages. More at jdandmarcus.com.
+LOCATION:Bellwood Public Library\, 600 Bohland Ave\, Bellwood\, IL 60104
+URL:https://jdandmarcus.com
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR
