@@ -1,0 +1,272 @@
+[
+  {
+    "rel": "00-Asset-Preview-Deck.pdf",
+    "thumb": "00-Asset-Preview-Deck.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "00-README.pdf",
+    "thumb": "00-README.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "01-brand-book/brand-book.pdf",
+    "thumb": "01-brand-book__brand-book.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "01-brand-book/logo-usage-cheatsheet.pdf",
+    "thumb": "01-brand-book__logo-usage-cheatsheet.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "02-media-kit/educator-one-sheet.pdf",
+    "thumb": "02-media-kit__educator-one-sheet.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "02-media-kit/fact-sheet.pdf",
+    "thumb": "02-media-kit__fact-sheet.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "03-press-releases/press-release-book-3-launch.pdf",
+    "thumb": "03-press-releases__press-release-book-3-launch.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "03-press-releases/press-release-event-april-25.pdf",
+    "thumb": "03-press-releases__press-release-event-april-25.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "04-social-templates/caption-hashtag-library.docx",
+    "thumb": "04-social-templates__caption-hashtag-library.png",
+    "ext": "docx"
+  },
+  {
+    "rel": "04-social-templates/facebook/event-april-25-cover.png",
+    "thumb": "04-social-templates__facebook__event-april-25-cover.png",
+    "ext": "png"
+  },
+  {
+    "rel": "04-social-templates/ig-feed/01-book3-launch-announce.png",
+    "thumb": "04-social-templates__ig-feed__01-book3-launch-announce.png",
+    "ext": "png"
+  },
+  {
+    "rel": "04-social-templates/ig-feed/02-countdown-7-days.png",
+    "thumb": "04-social-templates__ig-feed__02-countdown-7-days.png",
+    "ext": "png"
+  },
+  {
+    "rel": "04-social-templates/ig-feed/03-countdown-3-days.png",
+    "thumb": "04-social-templates__ig-feed__03-countdown-3-days.png",
+    "ext": "png"
+  },
+  {
+    "rel": "04-social-templates/ig-feed/04-countdown-launch-day.png",
+    "thumb": "04-social-templates__ig-feed__04-countdown-launch-day.png",
+    "ext": "png"
+  },
+  {
+    "rel": "04-social-templates/ig-feed/05-quote-card-friendship.png",
+    "thumb": "04-social-templates__ig-feed__05-quote-card-friendship.png",
+    "ext": "png"
+  },
+  {
+    "rel": "04-social-templates/ig-feed/06-quote-card-courage.png",
+    "thumb": "04-social-templates__ig-feed__06-quote-card-courage.png",
+    "ext": "png"
+  },
+  {
+    "rel": "04-social-templates/ig-feed/07-educator-one-sheet-cta.png",
+    "thumb": "04-social-templates__ig-feed__07-educator-one-sheet-cta.png",
+    "ext": "png"
+  },
+  {
+    "rel": "04-social-templates/ig-feed/08-event-april-25.png",
+    "thumb": "04-social-templates__ig-feed__08-event-april-25.png",
+    "ext": "png"
+  },
+  {
+    "rel": "04-social-templates/ig-story/01-book3-launch-announce.png",
+    "thumb": "04-social-templates__ig-story__01-book3-launch-announce.png",
+    "ext": "png"
+  },
+  {
+    "rel": "04-social-templates/ig-story/02-countdown-7-days.png",
+    "thumb": "04-social-templates__ig-story__02-countdown-7-days.png",
+    "ext": "png"
+  },
+  {
+    "rel": "04-social-templates/ig-story/03-countdown-3-days.png",
+    "thumb": "04-social-templates__ig-story__03-countdown-3-days.png",
+    "ext": "png"
+  },
+  {
+    "rel": "04-social-templates/ig-story/04-countdown-launch-day.png",
+    "thumb": "04-social-templates__ig-story__04-countdown-launch-day.png",
+    "ext": "png"
+  },
+  {
+    "rel": "04-social-templates/ig-story/05-quote-card-friendship.png",
+    "thumb": "04-social-templates__ig-story__05-quote-card-friendship.png",
+    "ext": "png"
+  },
+  {
+    "rel": "04-social-templates/ig-story/06-quote-card-courage.png",
+    "thumb": "04-social-templates__ig-story__06-quote-card-courage.png",
+    "ext": "png"
+  },
+  {
+    "rel": "04-social-templates/ig-story/07-educator-one-sheet-cta.png",
+    "thumb": "04-social-templates__ig-story__07-educator-one-sheet-cta.png",
+    "ext": "png"
+  },
+  {
+    "rel": "04-social-templates/ig-story/08-event-april-25.png",
+    "thumb": "04-social-templates__ig-story__08-event-april-25.png",
+    "ext": "png"
+  },
+  {
+    "rel": "04-social-templates/linkedin/announcement-card.png",
+    "thumb": "04-social-templates__linkedin__announcement-card.png",
+    "ext": "png"
+  },
+  {
+    "rel": "05-email-templates/01-launch-announcement-fan-list.docx",
+    "thumb": "05-email-templates__01-launch-announcement-fan-list.png",
+    "ext": "docx"
+  },
+  {
+    "rel": "05-email-templates/02-educator-cold-pitch.docx",
+    "thumb": "05-email-templates__02-educator-cold-pitch.png",
+    "ext": "docx"
+  },
+  {
+    "rel": "05-email-templates/03-library-cold-pitch.docx",
+    "thumb": "05-email-templates__03-library-cold-pitch.png",
+    "ext": "docx"
+  },
+  {
+    "rel": "05-email-templates/04-bulk-purchase-reply.docx",
+    "thumb": "05-email-templates__04-bulk-purchase-reply.png",
+    "ext": "docx"
+  },
+  {
+    "rel": "05-email-templates/05-event-invitation-april-25.docx",
+    "thumb": "05-email-templates__05-event-invitation-april-25.png",
+    "ext": "docx"
+  },
+  {
+    "rel": "05-email-templates/06-reader-thank-you.docx",
+    "thumb": "05-email-templates__06-reader-thank-you.png",
+    "ext": "docx"
+  },
+  {
+    "rel": "05-email-templates/07-journalist-press-outreach.docx",
+    "thumb": "05-email-templates__07-journalist-press-outreach.png",
+    "ext": "docx"
+  },
+  {
+    "rel": "05-email-templates/08-post-event-follow-up.docx",
+    "thumb": "05-email-templates__08-post-event-follow-up.png",
+    "ext": "docx"
+  },
+  {
+    "rel": "06-reading-guides/activity-coloring-book-teacher-notes.pdf",
+    "thumb": "06-reading-guides__activity-coloring-book-teacher-notes.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "06-reading-guides/book1-reading-guide.pdf",
+    "thumb": "06-reading-guides__book1-reading-guide.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "06-reading-guides/book2-reading-guide.pdf",
+    "thumb": "06-reading-guides__book2-reading-guide.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "06-reading-guides/book3-reading-guide.pdf",
+    "thumb": "06-reading-guides__book3-reading-guide.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "06-reading-guides/sel-tie-in-worksheet.pdf",
+    "thumb": "06-reading-guides__sel-tie-in-worksheet.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "06-reading-guides/unit-plan-grades-2-6.pdf",
+    "thumb": "06-reading-guides__unit-plan-grades-2-6.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "07-event-kit-apr-25/digital-invitation.pdf",
+    "thumb": "07-event-kit-apr-25__digital-invitation.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "07-event-kit-apr-25/digital-invitation.png",
+    "thumb": "07-event-kit-apr-25__digital-invitation.png",
+    "ext": "png"
+  },
+  {
+    "rel": "07-event-kit-apr-25/photo-op-setup-guide.pdf",
+    "thumb": "07-event-kit-apr-25__photo-op-setup-guide.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "07-event-kit-apr-25/press-invite-list.pdf",
+    "thumb": "07-event-kit-apr-25__press-invite-list.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "07-event-kit-apr-25/rsvp-form-spec.pdf",
+    "thumb": "07-event-kit-apr-25__rsvp-form-spec.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "07-event-kit-apr-25/run-of-show.pdf",
+    "thumb": "07-event-kit-apr-25__run-of-show.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "07-event-kit-apr-25/signage-pack.pdf",
+    "thumb": "07-event-kit-apr-25__signage-pack.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "07-event-kit-apr-25/swag-checklist.pdf",
+    "thumb": "07-event-kit-apr-25__swag-checklist.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "07-event-kit-apr-25/vendor-contact-sheet.docx",
+    "thumb": "07-event-kit-apr-25__vendor-contact-sheet.png",
+    "ext": "docx"
+  },
+  {
+    "rel": "08-retail/bulk-order-form.pdf",
+    "thumb": "08-retail__bulk-order-form.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "08-retail/indie-bookstore-pitch.pdf",
+    "thumb": "08-retail__indie-bookstore-pitch.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "08-retail/junior-library-guild-submission.pdf",
+    "thumb": "08-retail__junior-library-guild-submission.png",
+    "ext": "pdf"
+  },
+  {
+    "rel": "08-retail/swan-library-expansion-letter.pdf",
+    "thumb": "08-retail__swan-library-expansion-letter.png",
+    "ext": "pdf"
+  }
+]

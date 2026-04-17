@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JD & Marcus Launch Kit — Asset Browser</title>
+<meta name="description" content="Every asset in the JD & Marcus launch kit, browseable with click-through to Google Drive.">
+<link rel="icon" type="image/png" href="logo-compact.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #E8531E; --orange-dark: #C13E14; --orange-light: #FFD9C2;
+    --gold: #F2B81E; --gold-dark: #B8860C;
+    --blue: #0F62D4; --blue-dark: #0A4AAE; --blue-deep: #022151;
+    --green: #7ABB11; --green-light: #E5F2C7;
+    --cream: #FFF8EC; --cream-dark: #F5EDDA;
+    --ink: #0F172A; --ink-soft: rgba(15,23,42,0.72);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Nunito', system-ui, sans-serif; background: var(--cream); color: var(--ink); }
+  h1, h2, h3, h4 { font-family: 'Fredoka', system-ui, sans-serif; letter-spacing: -0.01em; }
+
+  /* HERO */
+  .hero { position: relative; background: var(--blue-deep); color: #fff; padding: 72px 24px 56px; overflow: hidden; }
+  .hero::before { content:""; position:absolute; inset:0; background: repeating-conic-gradient(from 0deg at 50% 38%, rgba(242,184,30,0.08) 0deg 2deg, transparent 2deg 12deg); }
+  .hero::after { content:""; position:absolute; inset:0; background: radial-gradient(ellipse at 50% 32%, rgba(242,184,30,0.22) 0%, transparent 58%); }
+  .hero-stripe { position: absolute; height: 8px; left: 0; right: 0; background: linear-gradient(90deg, var(--orange) 33%, var(--gold) 33%, var(--gold) 66%, var(--green) 66%); }
+  .hero-stripe.top { top: 0; }
+  .hero-stripe.bot { bottom: 0; background: linear-gradient(90deg, var(--green) 33%, var(--gold) 33%, var(--gold) 66%, var(--orange) 66%); }
+  .hero-inner { position: relative; z-index: 2; max-width: 960px; margin: 0 auto; text-align: center; }
+  .hero-logo { width: min(72%, 480px); height: auto; margin-bottom: 24px; }
+  .hero-eyebrow { font-family: 'Fredoka'; font-weight: 600; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .hero h1 { font-size: clamp(36px, 6vw, 56px); font-weight: 700; line-height: 1.05; margin-bottom: 14px; }
+  .hero h1 .a { color: var(--gold); }
+  .hero-sub { font-weight: 500; font-size: clamp(15px, 2vw, 18px); color: rgba(255,255,255,0.9); max-width: 640px; margin: 0 auto 28px; line-height: 1.45; }
+  .hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .cta { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 999px; font-family: 'Fredoka'; font-weight: 600; font-size: 14px; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; }
+  .cta.primary { background: var(--orange); color: #fff; box-shadow: 0 6px 16px rgba(232,83,30,0.35); }
+  .cta.primary:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(232,83,30,0.45); }
+  .cta.ghost { background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.3); color: #fff; backdrop-filter: blur(4px); }
+  .cta.ghost:hover { background: rgba(255,255,255,0.2); }
+
+  /* JUMP NAV */
+  .jump-nav { position: sticky; top: 0; z-index: 10; background: rgba(255,248,236,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(15,23,42,0.08); padding: 12px 20px; }
+  .jump-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .jump-nav a { font-family: 'Fredoka'; font-weight: 600; font-size: 12px; color: var(--ink); text-decoration: none; padding: 6px 12px; border-radius: 999px; transition: background 0.15s; }
+  .jump-nav a:hover { background: var(--cream-dark); }
+  .jump-nav a .num { color: var(--orange); margin-right: 4px; }
+
+  /* SECTION */
+  main { max-width: 1200px; margin: 0 auto; padding: 48px 20px; }
+  .section { margin-bottom: 64px; }
+  .section-head { margin-bottom: 24px; border-bottom: 3px solid var(--orange); padding-bottom: 16px; position: relative; }
+  .section-head::after { content:""; position:absolute; left:0; right:0; bottom:-6px; height:3px; background: linear-gradient(90deg, var(--orange) 0%, var(--gold) 50%, var(--green) 100%); }
+  .section-head .num { font-family: 'Fredoka'; font-weight: 700; font-size: 13px; letter-spacing: 0.2em; color: var(--orange); text-transform: uppercase; margin-bottom: 6px; }
+  .section-head.gold .num { color: var(--gold-dark); }
+  .section-head.blue .num { color: var(--blue); }
+  .section-head.green .num { color: #3D6F00; }
+  .section-head h2 { font-size: clamp(28px, 4vw, 36px); font-weight: 700; color: var(--blue-deep); margin-bottom: 6px; }
+  .section-head .d { font-size: 15px; color: var(--ink-soft); }
+
+  .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  .grid.story { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+  .card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 14px rgba(15,23,42,0.08); display: flex; flex-direction: column; transition: transform 0.15s, box-shadow 0.15s; text-decoration: none; color: inherit; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(15,23,42,0.14); }
+  .card .thumb { position: relative; width: 100%; aspect-ratio: 4/5; background: var(--blue-deep); overflow: hidden; }
+  .card.story .thumb { aspect-ratio: 9/16; }
+  .card.square .thumb { aspect-ratio: 1/1; }
+  .card.landscape .thumb { aspect-ratio: 16/9; }
+  .card .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card.landscape .thumb img, .card.story .thumb img { object-fit: contain; background: var(--blue-deep); }
+  .card .meta { padding: 12px 14px; border-top: 3px solid var(--orange); }
+  .card.gold .meta { border-top-color: var(--gold); }
+  .card.blue .meta { border-top-color: var(--blue); }
+  .card.green .meta { border-top-color: var(--green); }
+  .card .name { font-family: 'Fredoka'; font-weight: 700; font-size: 13px; color: var(--ink); line-height: 1.25; margin-bottom: 4px; word-break: break-word; }
+  .card .desc { font-size: 12px; color: var(--ink-soft); line-height: 1.4; }
+
+  .subtle { font-size: 12px; color: var(--ink-soft); margin-bottom: 16px; font-family: 'Fredoka'; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* Footer */
+  footer { background: var(--ink); color: #fff; padding: 40px 24px; margin-top: 40px; }
+  footer .inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  footer .brand { font-family: 'Fredoka'; font-weight: 700; font-size: 18px; }
+  footer .brand span { color: var(--gold); }
+  footer .links { font-size: 14px; }
+  footer a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  footer a:hover { color: #fff; }
+  footer .copyright { font-size: 12px; color: rgba(255,255,255,0.5); width: 100%; margin-top: 16px; }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-stripe top"></div>
+  <div class="hero-inner">
+    <img class="hero-logo" src="logo.png" alt="The Adventures of JD & Marcus">
+    <p class="hero-eyebrow">Launch Kit · Asset Browser</p>
+    <h1>Every Asset, <span class="a">One Click Away</span></h1>
+    <p class="hero-sub">Fifty-four branded deliverables, organized into eight sections. Click any tile to open the file in Google Drive. Built for the April 25 Book 3 launch.</p>
+    <div class="hero-ctas">
+      <a href="https://drive.google.com/drive/folders/1_1c8wDtchcPxFnyky3_2_fWS4ONVxnQ3" target="_blank" rel="noopener" class="cta primary">Open Drive Folder →</a>
+      <a href="https://drive.google.com/file/d/1ehgwcYhvCXnPztzTUeZnCDXRPE7gQadF/view?usp=drivesdk" target="_blank" rel="noopener" class="cta ghost">Asset Preview Deck (PDF)</a>
+      <a href="https://drive.google.com/file/d/1OSH-vGJse_Vnbnc9SK_v0HKuVtifKlel/view?usp=drivesdk" target="_blank" rel="noopener" class="cta ghost">Download Zip (148 MB)</a>
+    </div>
+  </div>
+  <div class="hero-stripe bot"></div>
+</section>
+
+<!-- ===== JUMP NAV ===== -->
+<nav class="jump-nav">
+  <div class="jump-nav-inner">
+    <a href="#01-brand-book"><span class="num">01</span>Brand Book</a>
+    <a href="#02-media-kit"><span class="num">02</span>Media Kit</a>
+    <a href="#03-press-releases"><span class="num">03</span>Press Releases</a>
+    <a href="#04-social-templates"><span class="num">04</span>Social Templates</a>
+    <a href="#05-email-templates"><span class="num">05</span>Email Templates</a>
+    <a href="#06-reading-guides"><span class="num">06</span>Reading Guides</a>
+    <a href="#07-event-kit-apr-25"><span class="num">07</span>Event Kit</a>
+    <a href="#08-retail"><span class="num">08</span>Retail</a>
+  </div>
+</nav>
+
+<main>
+<section class="section" id="01-brand-book">
+  <div class="section-head orange">
+    <p class="num">Section 01</p>
+    <h2>Brand Book</h2>
+    <p class="d">The visual identity.</p>
+  </div>
+  <div class="grid">
+    <a class="card orange" href="https://drive.google.com/file/d/1NbGyn_AzVqJQnHSEZlDzO-aO7tG9xLPg/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/01-brand-book__brand-book.png" alt="brand-book.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">brand-book.pdf</div><div class="desc">Full 11-page visual identity guide.</div></div>
+    </a>
+    <a class="card orange" href="https://drive.google.com/file/d/1WdOpDcBfqwt50cBzttDTbdiZkx-GHO34/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/01-brand-book__logo-usage-cheatsheet.png" alt="logo-usage-cheatsheet.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">logo-usage-cheatsheet.pdf</div><div class="desc">One-page logo rules at-a-glance.</div></div>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="02-media-kit">
+  <div class="section-head gold">
+    <p class="num">Section 02</p>
+    <h2>Media Kit</h2>
+    <p class="d">Educator one-sheet + fact sheet.</p>
+  </div>
+  <div class="grid">
+    <a class="card gold" href="https://drive.google.com/file/d/1Y7A_-LYuwAMkp4I8IdKxrFrdc1VgemIo/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/02-media-kit__educator-one-sheet.png" alt="educator-one-sheet.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">educator-one-sheet.pdf</div><div class="desc">2-page educator sell sheet. For teachers + librarians.</div></div>
+    </a>
+    <a class="card gold" href="https://drive.google.com/file/d/11gO2U9WTa6AgUPSsqxmhznOsdNjXtsOh/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/02-media-kit__fact-sheet.png" alt="fact-sheet.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">fact-sheet.pdf</div><div class="desc">4-page press fact sheet.</div></div>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="03-press-releases">
+  <div class="section-head blue">
+    <p class="num">Section 03</p>
+    <h2>Press Releases</h2>
+    <p class="d">Traditional AP format, branded masthead.</p>
+  </div>
+  <div class="grid">
+    <a class="card blue" href="https://drive.google.com/file/d/1OHvQyNa2iQH95e4sEIMAbtA7q5RhOFCq/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/03-press-releases__press-release-book-3-launch.png" alt="press-release-book-3-launch.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">press-release-book-3-launch.pdf</div><div class="desc">General + trade press release.</div></div>
+    </a>
+    <a class="card blue" href="https://drive.google.com/file/d/1D24jdYERtaqaJVQShD89mLwHFd2o2H2p/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/03-press-releases__press-release-event-april-25.png" alt="press-release-event-april-25.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">press-release-event-april-25.pdf</div><div class="desc">Hyperlocal April 25 event release.</div></div>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="04-social-templates">
+  <div class="section-head green">
+    <p class="num">Section 04</p>
+    <h2>Social Templates</h2>
+    <p class="d">18 branded posts + caption library.</p>
+  </div>
+  <p class="subtle">IG Feed (1080 × 1080)</p>
+  <div class="grid ">
+    <a class="card green square" href="https://drive.google.com/file/d/1EjvBYqZrBQSwy5cSh_fQJ8Gj3xwq3pTM/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/04-social-templates__ig-feed__01-book3-launch-announce.png" alt="01-book3-launch-announce.png" loading="lazy"></div>
+      <div class="meta"><div class="name">01-book3-launch-announce.png</div><div class="desc">IG feed launch announcement.</div></div>
+    </a>
+    <a class="card green square" href="https://drive.google.com/file/d/1DT3u8PzWGBUwlJYT3x9Sj5xoUWflp_uR/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/04-social-templates__ig-feed__02-countdown-7-days.png" alt="02-countdown-7-days.png" loading="lazy"></div>
+      <div class="meta"><div class="name">02-countdown-7-days.png</div><div class="desc">IG feed 7-day countdown.</div></div>
+    </a>
+    <a class="card green square" href="https://drive.google.com/file/d/1pBmw15bWM2n8XpOdipnkBcb6L9Xm-qS0/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/04-social-templates__ig-feed__03-countdown-3-days.png" alt="03-countdown-3-days.png" loading="lazy"></div>
+      <div class="meta"><div class="name">03-countdown-3-days.png</div><div class="desc">IG feed 3-day countdown.</div></div>
+    </a>
+    <a class="card green square" href="https://drive.google.com/file/d/1Ncy-NXOedFV6FscKAWAqZfCWlaSkuB3-/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/04-social-templates__ig-feed__04-countdown-launch-day.png" alt="04-countdown-launch-day.png" loading="lazy"></div>
+      <div class="meta"><div class="name">04-countdown-launch-day.png</div><div class="desc">IG feed launch-day post.</div></div>
+    </a>
+    <a class="card green square" href="https://drive.google.com/file/d/1JZRYGPrl-Yhg7HcIx8V_UXEJDNBa8b0y/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/04-social-templates__ig-feed__05-quote-card-friendship.png" alt="05-quote-card-friendship.png" loading="lazy"></div>
+      <div class="meta"><div class="name">05-quote-card-friendship.png</div><div class="desc">IG friendship quote card.</div></div>
+    </a>
+    <a class="card green square" href="https://drive.google.com/file/d/1KymMsmo8WlbDf4VJUfGfZf4lGoKq0OdL/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/04-social-templates__ig-feed__06-quote-card-courage.png" alt="06-quote-card-courage.png" loading="lazy"></div>
+      <div class="meta"><div class="name">06-quote-card-courage.png</div><div class="desc">IG courage quote card.</div></div>
+    </a>
+    <a class="card green square" href="https://drive.google.com/file/d/1W--R34dXvwmM650vpaJi9BTuU1lYpyWR/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/04-social-templates__ig-feed__07-educator-one-sheet-cta.png" alt="07-educator-one-sheet-cta.png" loading="lazy"></div>
+      <div class="meta"><div class="name">07-educator-one-sheet-cta.png</div><div class="desc">IG educator CTA.</div></div>
+    </a>
+    <a class="card green square" href="https://drive.google.com/file/d/1MUh7xaw7xmwyRez6bI65oTsQUQJVakP4/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/04-social-templates__ig-feed__08-event-april-25.png" alt="08-event-april-25.png" loading="lazy"></div>
+      <div class="meta"><div class="name">08-event-april-25.png</div><div class="desc">IG event announcement.</div></div>
+    </a>
+  </div>
+  <p class="subtle">IG Story (1080 × 1920)</p>
+  <div class="grid story">
+    <a class="card green story" href="https://drive.google.com/file/d/1M3IJAT2Rd1dnnPAURrO9XQZy8qPKU0gB/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/04-social-templates__ig-story__01-book3-launch-announce.png" alt="01-book3-launch-announce.png" loading="lazy"></div>
+      <div class="meta"><div class="name">01-book3-launch-announce.png</div><div class="desc">IG story launch announcement.</div></div>
+    </a>
+    <a class="card green story" href="https://drive.google.com/file/d/1ueTFJbf4Lr0ryyRrpyeqk4bmUgEUtkEb/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/04-social-templates__ig-story__02-countdown-7-days.png" alt="02-countdown-7-days.png" loading="lazy"></div>
+      <div class="meta"><div class="name">02-countdown-7-days.png</div><div class="desc">IG story 7-day countdown.</div></div>
+    </a>
+    <a class="card green story" href="https://drive.google.com/file/d/172gdTah2GcoQz5jtQunj9ZuTS2Q8vdmB/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/04-social-templates__ig-story__03-countdown-3-days.png" alt="03-countdown-3-days.png" loading="lazy"></div>
+      <div class="meta"><div class="name">03-countdown-3-days.png</div><div class="desc">IG story 3-day countdown.</div></div>
+    </a>
+    <a class="card green story" href="https://drive.google.com/file/d/1JfAwAi0XURIQJDl7r6OZ-QRu6X_IgaRB/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/04-social-templates__ig-story__04-countdown-launch-day.png" alt="04-countdown-launch-day.png" loading="lazy"></div>
+      <div class="meta"><div class="name">04-countdown-launch-day.png</div><div class="desc">IG story launch-day.</div></div>
+    </a>
+    <a class="card green story" href="https://drive.google.com/file/d/1Lj5J334mKcUV9urTt2RZItnmLBxRr8yW/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/04-social-templates__ig-story__05-quote-card-friendship.png" alt="05-quote-card-friendship.png" loading="lazy"></div>
+      <div class="meta"><div class="name">05-quote-card-friendship.png</div><div class="desc">IG story friendship quote.</div></div>
+    </a>
+    <a class="card green story" href="https://drive.google.com/file/d/1PLoPpQwUze9dwaPeqTZj3WNMIw7vwA60/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/04-social-templates__ig-story__06-quote-card-courage.png" alt="06-quote-card-courage.png" loading="lazy"></div>
+      <div class="meta"><div class="name">06-quote-card-courage.png</div><div class="desc">IG story courage quote.</div></div>
+    </a>
+    <a class="card green story" href="https://drive.google.com/file/d/122n8UaOK4q14TGJ-5DrFWPrFpnT_qs-M/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/04-social-templates__ig-story__07-educator-one-sheet-cta.png" alt="07-educator-one-sheet-cta.png" loading="lazy"></div>
+      <div class="meta"><div class="name">07-educator-one-sheet-cta.png</div><div class="desc">IG story educator CTA.</div></div>
+    </a>
+    <a class="card green story" href="https://drive.google.com/file/d/1MNdpyQzhcL1D9g56XP-20yCIxLQSu-SH/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/04-social-templates__ig-story__08-event-april-25.png" alt="08-event-april-25.png" loading="lazy"></div>
+      <div class="meta"><div class="name">08-event-april-25.png</div><div class="desc">IG story event announcement.</div></div>
+    </a>
+  </div>
+  <p class="subtle">Facebook, LinkedIn & Captions</p>
+  <div class="grid ">
+    <a class="card green square" href="https://docs.google.com/document/d/14FBxTkfLZr0zJT9BSb46Dv8w6Rc4cNLW/edit?usp=drivesdk&ouid=106933254424555116695&rtpof=true&sd=true" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/04-social-templates__caption-hashtag-library.png" alt="caption-hashtag-library.docx" loading="lazy"></div>
+      <div class="meta"><div class="name">caption-hashtag-library.docx</div><div class="desc">20 caption templates + 50 hashtags.</div></div>
+    </a>
+    <a class="card green landscape" href="https://drive.google.com/file/d/1ksLW5AtIttj8D1qrr790S0XE61qYTv7b/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/04-social-templates__facebook__event-april-25-cover.png" alt="event-april-25-cover.png" loading="lazy"></div>
+      <div class="meta"><div class="name">event-april-25-cover.png</div><div class="desc">Facebook event cover.</div></div>
+    </a>
+    <a class="card green landscape" href="https://drive.google.com/file/d/1xsrmp0wBSVKBnyKTJ--D02LzlY4LqIVw/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/04-social-templates__linkedin__announcement-card.png" alt="announcement-card.png" loading="lazy"></div>
+      <div class="meta"><div class="name">announcement-card.png</div><div class="desc">LinkedIn announcement card.</div></div>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="05-email-templates">
+  <div class="section-head orange">
+    <p class="num">Section 05</p>
+    <h2>Email Templates</h2>
+    <p class="d">8 Word docs ready to copy into Gmail.</p>
+  </div>
+  <div class="grid">
+    <a class="card orange" href="https://docs.google.com/document/d/1ItXLNASu_nZXjRNz5KcS8s7v0ZDMVvIu/edit?usp=drivesdk&ouid=106933254424555116695&rtpof=true&sd=true" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/05-email-templates__01-launch-announcement-fan-list.png" alt="01-launch-announcement-fan-list.docx" loading="lazy"></div>
+      <div class="meta"><div class="name">01-launch-announcement-fan-list.docx</div><div class="desc">Email: launch announcement.</div></div>
+    </a>
+    <a class="card orange" href="https://docs.google.com/document/d/1OxmHYFwoFPYaw7kuSF2mp5pIWd1249Hn/edit?usp=drivesdk&ouid=106933254424555116695&rtpof=true&sd=true" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/05-email-templates__02-educator-cold-pitch.png" alt="02-educator-cold-pitch.docx" loading="lazy"></div>
+      <div class="meta"><div class="name">02-educator-cold-pitch.docx</div><div class="desc">Email: educator cold pitch.</div></div>
+    </a>
+    <a class="card orange" href="https://docs.google.com/document/d/1Dz0X0SMIpVbtvRcQ7auypnGmY4J9z-iP/edit?usp=drivesdk&ouid=106933254424555116695&rtpof=true&sd=true" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/05-email-templates__03-library-cold-pitch.png" alt="03-library-cold-pitch.docx" loading="lazy"></div>
+      <div class="meta"><div class="name">03-library-cold-pitch.docx</div><div class="desc">Email: library cold pitch.</div></div>
+    </a>
+    <a class="card orange" href="https://docs.google.com/document/d/1WrHQIx-VwYuWODaSx4p4yBIl20EHZ_OF/edit?usp=drivesdk&ouid=106933254424555116695&rtpof=true&sd=true" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/05-email-templates__04-bulk-purchase-reply.png" alt="04-bulk-purchase-reply.docx" loading="lazy"></div>
+      <div class="meta"><div class="name">04-bulk-purchase-reply.docx</div><div class="desc">Email: bulk purchase reply.</div></div>
+    </a>
+    <a class="card orange" href="https://docs.google.com/document/d/1TCQtnC7F1j85hVdYI_3OgDXHHhOATrqQ/edit?usp=drivesdk&ouid=106933254424555116695&rtpof=true&sd=true" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/05-email-templates__05-event-invitation-april-25.png" alt="05-event-invitation-april-25.docx" loading="lazy"></div>
+      <div class="meta"><div class="name">05-event-invitation-april-25.docx</div><div class="desc">Email: event invitation.</div></div>
+    </a>
+    <a class="card orange" href="https://docs.google.com/document/d/1MUSXyK-XDx5vuxssZQThxelCZSGs0AiY/edit?usp=drivesdk&ouid=106933254424555116695&rtpof=true&sd=true" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/05-email-templates__06-reader-thank-you.png" alt="06-reader-thank-you.docx" loading="lazy"></div>
+      <div class="meta"><div class="name">06-reader-thank-you.docx</div><div class="desc">Email: reader thank-you.</div></div>
+    </a>
+    <a class="card orange" href="https://docs.google.com/document/d/1Mvw26KbRTBlLKMB397W39Nyn-ZU9yJht/edit?usp=drivesdk&ouid=106933254424555116695&rtpof=true&sd=true" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/05-email-templates__07-journalist-press-outreach.png" alt="07-journalist-press-outreach.docx" loading="lazy"></div>
+      <div class="meta"><div class="name">07-journalist-press-outreach.docx</div><div class="desc">Email: journalist press outreach.</div></div>
+    </a>
+    <a class="card orange" href="https://docs.google.com/document/d/1hwIwz9-RE70u9fP77vrYmZd-jSLByXzS/edit?usp=drivesdk&ouid=106933254424555116695&rtpof=true&sd=true" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/05-email-templates__08-post-event-follow-up.png" alt="08-post-event-follow-up.docx" loading="lazy"></div>
+      <div class="meta"><div class="name">08-post-event-follow-up.docx</div><div class="desc">Email: post-event follow-up.</div></div>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="06-reading-guides">
+  <div class="section-head gold">
+    <p class="num">Section 06</p>
+    <h2>Reading Guides</h2>
+    <p class="d">Educator PDFs, CCSS ELA + CASEL aligned.</p>
+  </div>
+  <div class="grid">
+    <a class="card gold" href="https://drive.google.com/file/d/1_jctHGAHwcaYRpSx0YKYRDAOlbphO_RU/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/06-reading-guides__activity-coloring-book-teacher-notes.png" alt="activity-coloring-book-teacher-notes.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">activity-coloring-book-teacher-notes.pdf</div><div class="desc">Activity Book teacher notes.</div></div>
+    </a>
+    <a class="card gold" href="https://drive.google.com/file/d/1dV1Buqnk2w_BNyp6RIxeLysYe9cQfSpT/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/06-reading-guides__book1-reading-guide.png" alt="book1-reading-guide.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">book1-reading-guide.pdf</div><div class="desc">Book 1 educator reading guide.</div></div>
+    </a>
+    <a class="card gold" href="https://drive.google.com/file/d/1akW4A1hL1EzacGUqE4BIKEUyHOoSuA82/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/06-reading-guides__book2-reading-guide.png" alt="book2-reading-guide.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">book2-reading-guide.pdf</div><div class="desc">Book 2 educator reading guide.</div></div>
+    </a>
+    <a class="card gold" href="https://drive.google.com/file/d/1Eme-X_YYn0ud9VOeuX1exzS59GmPd1FR/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/06-reading-guides__book3-reading-guide.png" alt="book3-reading-guide.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">book3-reading-guide.pdf</div><div class="desc">Book 3 educator reading guide.</div></div>
+    </a>
+    <a class="card gold" href="https://drive.google.com/file/d/1rgPJ9pNKmXaMgv-jBsntYSeAsse5vRdd/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/06-reading-guides__sel-tie-in-worksheet.png" alt="sel-tie-in-worksheet.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">sel-tie-in-worksheet.pdf</div><div class="desc">CASEL SEL tie-in worksheet.</div></div>
+    </a>
+    <a class="card gold" href="https://drive.google.com/file/d/1XpvQbzkB-KYuWH2QoMyRUkaszRla2kOT/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/06-reading-guides__unit-plan-grades-2-6.png" alt="unit-plan-grades-2-6.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">unit-plan-grades-2-6.pdf</div><div class="desc">4-week, 20-lesson unit plan.</div></div>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="07-event-kit-apr-25">
+  <div class="section-head blue">
+    <p class="num">Section 07</p>
+    <h2>Event Kit · April 25</h2>
+    <p class="d">Everything for the Bellwood launch.</p>
+  </div>
+  <div class="grid">
+    <a class="card blue" href="https://drive.google.com/file/d/1Qqq4kpEU5wjAetjSfi6dchKv1Iz7YxP6/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/07-event-kit-apr-25__digital-invitation.png" alt="digital-invitation.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">digital-invitation.pdf</div><div class="desc">Print-ready invitation (PDF).</div></div>
+    </a>
+    <a class="card blue" href="https://drive.google.com/file/d/1g2wrQxBhpOQMd9_gu6QRHUqxR5RK3_0h/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/07-event-kit-apr-25__digital-invitation.png" alt="digital-invitation.png" loading="lazy"></div>
+      <div class="meta"><div class="name">digital-invitation.png</div><div class="desc">Invitation PNG for social.</div></div>
+    </a>
+    <a class="card blue" href="https://drive.google.com/file/d/1SR_lE0OOj4hSw4TJ8JH0Gemu9z0fx7_G/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/07-event-kit-apr-25__photo-op-setup-guide.png" alt="photo-op-setup-guide.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">photo-op-setup-guide.pdf</div><div class="desc">Photo op setup + shot list.</div></div>
+    </a>
+    <a class="card blue" href="https://drive.google.com/file/d/1dQ3CKGa8HEsaaPMwXniKOHqno-Va5Yoz/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/07-event-kit-apr-25__press-invite-list.png" alt="press-invite-list.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">press-invite-list.pdf</div><div class="desc">Press outlet invite list.</div></div>
+    </a>
+    <a class="card blue" href="https://drive.google.com/file/d/1bqA5QbNo8kmvATgzCMDMx3J1Eyu6wcj6/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/07-event-kit-apr-25__rsvp-form-spec.png" alt="rsvp-form-spec.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">rsvp-form-spec.pdf</div><div class="desc">RSVP form fields for Google Form.</div></div>
+    </a>
+    <a class="card blue" href="https://drive.google.com/file/d/1gN3KHdrKZHDnefKa8afxUciKVPkOQ3v_/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/07-event-kit-apr-25__run-of-show.png" alt="run-of-show.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">run-of-show.pdf</div><div class="desc">Full-day event run of show.</div></div>
+    </a>
+    <a class="card blue" href="https://drive.google.com/file/d/1G3xbYS_4kFtnM3HOerxIOWmhCOjt8A8d/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/07-event-kit-apr-25__signage-pack.png" alt="signage-pack.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">signage-pack.pdf</div><div class="desc">8-sign event signage pack.</div></div>
+    </a>
+    <a class="card blue" href="https://drive.google.com/file/d/1HxDKEoMiuF4AjVmS9rpc0bcINSZw2uGz/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/07-event-kit-apr-25__swag-checklist.png" alt="swag-checklist.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">swag-checklist.pdf</div><div class="desc">Swag checklist + budget.</div></div>
+    </a>
+    <a class="card blue" href="https://docs.google.com/document/d/109A4lhEpiU-rp3bRDOocf9ETZ8D2tPZx/edit?usp=drivesdk&ouid=106933254424555116695&rtpof=true&sd=true" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/07-event-kit-apr-25__vendor-contact-sheet.png" alt="vendor-contact-sheet.docx" loading="lazy"></div>
+      <div class="meta"><div class="name">vendor-contact-sheet.docx</div><div class="desc">Vendor contact sheet (fillable).</div></div>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="08-retail">
+  <div class="section-head green">
+    <p class="num">Section 08</p>
+    <h2>Retail</h2>
+    <p class="d">Bulk order, POs, library + bookstore pitches.</p>
+  </div>
+  <div class="grid">
+    <a class="card green" href="https://drive.google.com/file/d/1dA9h9ipXT8mHdJul8HEbKQgaw4ONFQnb/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/08-retail__bulk-order-form.png" alt="bulk-order-form.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">bulk-order-form.pdf</div><div class="desc">Branded bulk order form.</div></div>
+    </a>
+    <a class="card green" href="https://drive.google.com/file/d/122tQP49xUMAPAKnmPOPSgu8a1XcpRooR/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/08-retail__indie-bookstore-pitch.png" alt="indie-bookstore-pitch.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">indie-bookstore-pitch.pdf</div><div class="desc">Indie bookstore pitch one-pager.</div></div>
+    </a>
+    <a class="card green" href="https://drive.google.com/file/d/1YqxrQI_4lv5uUmWcnAfvwsP6NdTJqOPc/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/08-retail__junior-library-guild-submission.png" alt="junior-library-guild-submission.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">junior-library-guild-submission.pdf</div><div class="desc">JLG editorial submission letter.</div></div>
+    </a>
+    <a class="card green" href="https://drive.google.com/file/d/1BZjxIXLKsiCt_HnobDoMZy8cnwnbjd-g/view?usp=drivesdk" target="_blank" rel="noopener">
+      <div class="thumb"><img src="thumbs/08-retail__swan-library-expansion-letter.png" alt="swan-library-expansion-letter.pdf" loading="lazy"></div>
+      <div class="meta"><div class="name">swan-library-expansion-letter.pdf</div><div class="desc">SWAN Library expansion letter.</div></div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="inner">
+    <div class="brand">The Adventures of <span>JD &amp; Marcus</span></div>
+    <div class="links">
+      <a href="https://jdandmarcus.com" target="_blank">jdandmarcus.com</a>
+    </div>
+    <div class="copyright">© 2026 Jay Davis Films, LLC · Bellwood, Illinois · Launch Kit Asset Browser</div>
+  </div>
+</footer>
+
+</body>
+</html>
