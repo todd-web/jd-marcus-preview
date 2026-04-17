@@ -14,17 +14,19 @@
     theme: {
       extend: {
         colors: {
-          'jdm-orange': '#F26A1F',
-          'jdm-orange-dark': '#D85510',
-          'jdm-orange-light': '#FFE3CC',
-          'jdm-gold': '#D4A436',
-          'jdm-gold-dark': '#A8822B',
-          'jdm-blue': '#1F4FA8',
-          'jdm-blue-dark': '#163B80',
-          'jdm-blue-light': '#E4EBF8',
+          'jdm-orange': '#E8531E',
+          'jdm-orange-dark': '#C13E14',
+          'jdm-orange-light': '#FFD9C2',
+          'jdm-gold': '#F2B81E',
+          'jdm-gold-dark': '#B8860C',
+          'jdm-blue': '#0F62D4',
+          'jdm-blue-dark': '#0A4AAE',
+          'jdm-blue-deep': '#022151',
+          'jdm-blue-light': '#E1ECFB',
+          'jdm-green': '#7ABB11',
+          'jdm-green-light': '#E5F2C7',
           'jdm-cream': '#FFF8EC',
           'jdm-cream-dark': '#F5EDDA',
-          'jdm-sky': '#7CC5E8',
           'jdm-ink': '#0F172A',
         },
         fontFamily: {
@@ -55,14 +57,14 @@
   /* ANNOUNCEMENT PILL */
   .announcement-pill {
     display: inline-flex; align-items: center; gap: 0.75rem;
-    background: rgba(242,106,31,0.95); color: #fff;
+    background: rgba(232,83,30,0.95); color: #fff;
     font-family: 'Fredoka', sans-serif; font-weight: 600;
     padding: 0.625rem 1.25rem; border-radius: 999px;
     font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase;
     transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
-    box-shadow: 0 6px 16px rgba(242,106,31,0.35);
+    box-shadow: 0 6px 16px rgba(232,83,30,0.35);
   }
-  .announcement-pill:hover { background: #D85510; transform: translateY(-1px); box-shadow: 0 10px 22px rgba(242,106,31,0.50); }
+  .announcement-pill:hover { background: #C13E14; transform: translateY(-1px); box-shadow: 0 10px 22px rgba(232,83,30,0.50); }
   .announcement-pill .cal-icon { width: 16px; height: 16px; flex-shrink: 0; }
   .announcement-pill .divider { width: 3px; height: 3px; border-radius: 999px; background: rgba(255,255,255,0.55); flex-shrink: 0; }
   .announcement-pill .cta { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: rgba(255,255,255,0.55); }
@@ -73,27 +75,27 @@
 
   /* BUTTONS */
   .btn-primary {
-    background: #F26A1F; color: #fff;
-    box-shadow: 0 8px 20px rgba(242,106,31,0.45), inset 0 -3px 0 rgba(0,0,0,0.12);
+    background: #E8531E; color: #fff;
+    box-shadow: 0 8px 20px rgba(232,83,30,0.45), inset 0 -3px 0 rgba(0,0,0,0.12);
     transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
   }
-  .btn-primary:hover { background: #D85510; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(242,106,31,0.55); }
+  .btn-primary:hover { background: #C13E14; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(232,83,30,0.55); }
   .btn-outline-white {
     background: rgba(255,255,255,0.08); color: #fff; border: 2px solid #fff; backdrop-filter: blur(6px);
     transition: all 180ms ease;
   }
-  .btn-outline-white:hover { background: #fff; color: #1F4FA8; }
-  .btn-blue { background: #1F4FA8; color: #fff; box-shadow: 0 6px 16px rgba(31,79,168,0.35); transition: all 180ms ease; }
-  .btn-blue:hover { background: #163B80; transform: translateY(-2px); }
-  .btn-outline-blue { background: transparent; color: #1F4FA8; border: 2px solid #1F4FA8; transition: all 180ms ease; }
-  .btn-outline-blue:hover { background: #1F4FA8; color: #fff; }
+  .btn-outline-white:hover { background: #fff; color: #0F62D4; }
+  .btn-blue { background: #0F62D4; color: #fff; box-shadow: 0 6px 16px rgba(15,98,212,0.35); transition: all 180ms ease; }
+  .btn-blue:hover { background: #0A4AAE; transform: translateY(-2px); }
+  .btn-outline-blue { background: transparent; color: #0F62D4; border: 2px solid #0F62D4; transition: all 180ms ease; }
+  .btn-outline-blue:hover { background: #0F62D4; color: #fff; }
 
   /* NAV */
   .topnav { background: rgba(255,248,236,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(15,23,42,0.06); }
-  .nav-buybook { background: #F26A1F; color: #fff; box-shadow: 0 4px 10px rgba(242,106,31,0.35); }
-  .nav-buybook:hover { background: #D85510; }
-  .nav-bookj { background: transparent; color: #1F4FA8; border: 2px solid #1F4FA8; }
-  .nav-bookj:hover { background: #1F4FA8; color: #fff; }
+  .nav-buybook { background: #E8531E; color: #fff; box-shadow: 0 4px 10px rgba(232,83,30,0.35); }
+  .nav-buybook:hover { background: #C13E14; }
+  .nav-bookj { background: transparent; color: #0F62D4; border: 2px solid #0F62D4; }
+  .nav-bookj:hover { background: #0F62D4; color: #fff; }
   /* Hamburger (mobile) */
   .nav-toggle { display: none; }
   .nav-burger {
@@ -107,18 +109,18 @@
     flex-shrink: 0;
     transition: border-color 180ms ease, background 180ms ease;
   }
-  .nav-burger:hover { border-color: #1F4FA8; background: #E4EBF8; }
+  .nav-burger:hover { border-color: #0F62D4; background: #E1ECFB; }
   .nav-burger span {
     position: relative;
     display: block;
     width: 18px; height: 2px;
-    background: #1F4FA8;
+    background: #0F62D4;
     border-radius: 2px;
     transition: transform 180ms ease, opacity 180ms ease;
   }
   .nav-burger span::before, .nav-burger span::after {
     content: ""; position: absolute; left: 0;
-    width: 18px; height: 2px; background: #1F4FA8; border-radius: 2px;
+    width: 18px; height: 2px; background: #0F62D4; border-radius: 2px;
     transition: transform 180ms ease;
   }
   .nav-burger span::before { top: -6px; }
@@ -148,7 +150,7 @@
     transition: color 180ms ease;
   }
   .mobile-menu a:last-child { border-bottom: none; }
-  .mobile-menu a:hover { color: #F26A1F; }
+  .mobile-menu a:hover { color: #E8531E; }
   nav:has(.nav-toggle:checked) .mobile-menu { display: flex; }
   @media (max-width: 1023px) {
     .nav-burger { display: inline-flex; }
@@ -167,8 +169,8 @@
   .book-cover-img { aspect-ratio: 2/3; width: 100%; object-fit: cover; }
   .book-placeholder {
     aspect-ratio: 2/3; width: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column;
-    background: linear-gradient(160deg, #1F4FA8 0%, #163B80 50%, #0F172A 100%);
-    color: #D4A436; padding: 2rem;
+    background: linear-gradient(160deg, #0F62D4 0%, #0A4AAE 50%, #0F172A 100%);
+    color: #F2B81E; padding: 2rem;
   }
 
   /* FILMSTRIP */
@@ -212,20 +214,20 @@
 
   /* SPEAKER RATE CARDS */
   .rate-card {
-    background: #fff; border: 2px solid #E4EBF8; border-radius: 20px; padding: 1.75rem;
+    background: #fff; border: 2px solid #E1ECFB; border-radius: 20px; padding: 1.75rem;
     transition: border-color 200ms ease, transform 200ms ease;
   }
-  .rate-card:hover { border-color: #F26A1F; transform: translateY(-3px); }
-  .rate-card.featured { border-color: #F26A1F; background: linear-gradient(180deg, #FFF 0%, #FFE3CC 100%); }
+  .rate-card:hover { border-color: #E8531E; transform: translateY(-3px); }
+  .rate-card.featured { border-color: #E8531E; background: linear-gradient(180deg, #FFF 0%, #FFD9C2 100%); }
 
   /* FORMS */
   .form-input, .form-textarea, .form-select {
-    width: 100%; padding: 0.875rem 1rem; border: 2px solid #E4EBF8; border-radius: 14px;
+    width: 100%; padding: 0.875rem 1rem; border: 2px solid #E1ECFB; border-radius: 14px;
     background: #fff; font-family: 'Nunito', system-ui, sans-serif; color: #0F172A; font-size: 0.95rem;
     transition: border-color 160ms ease, box-shadow 160ms ease;
   }
   .form-input:focus, .form-textarea:focus, .form-select:focus {
-    outline: none; border-color: #F26A1F; box-shadow: 0 0 0 4px rgba(242,106,31,0.12);
+    outline: none; border-color: #E8531E; box-shadow: 0 0 0 4px rgba(232,83,30,0.12);
   }
 
   /* PRESS */
@@ -236,10 +238,10 @@
   }
   a.press-logo {
     cursor: pointer;
-    color: #1F4FA8;
+    color: #0F62D4;
     opacity: 0.85;
   }
-  a.press-logo:hover { opacity: 1; color: #163B80; }
+  a.press-logo:hover { opacity: 1; color: #0A4AAE; }
   a.press-logo::after {
     content: "↗";
     display: inline-block;
@@ -263,7 +265,7 @@
 <nav class="topnav fixed top-0 left-0 right-0 z-50">
   <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 py-3">
     <a href="#" class="flex items-center gap-3 shrink-0">
-      <img src="assets/title-treatment.png" alt="JD & Marcus" class="h-10 md:h-12 w-auto">
+      <img src="assets/jd-marcus-logo-primary.png" alt="The Adventures of JD & Marcus" class="h-11 md:h-14 w-auto">
     </a>
     <div class="hidden lg:flex items-center gap-7 font-fredoka text-jdm-ink font-medium">
       <a href="#series" class="hover:text-jdm-orange transition">The Series</a>
@@ -515,12 +517,17 @@
         <p class="font-fredoka font-semibold text-jdm-gold uppercase tracking-widest text-sm mb-3">For Schools &amp; Libraries</p>
         <h2 class="font-fredoka font-bold text-4xl md:text-5xl mb-5 leading-tight">Bring JD &amp; Marcus into Your Classroom</h2>
         <p class="font-nunito text-white/90 text-lg leading-relaxed mb-6">The series supports reading comprehension, critical thinking, social-emotional learning, and cultural representation. Perfect for grades 2-6, reading circles, after-school programs, and summer learning kits.</p>
-        <ul class="space-y-2 font-nunito text-white/90 mb-8">
+        <ul class="space-y-2 font-nunito text-white/90 mb-6">
           <li class="flex items-start gap-2"><span class="text-jdm-gold mt-1">✓</span><span>Bulk pricing from 20% off (10+ copies) up to 30% off (50+ copies)</span></li>
           <li class="flex items-start gap-2"><span class="text-jdm-gold mt-1">✓</span><span>Purchase orders accepted from school districts and libraries</span></li>
-          <li class="flex items-start gap-2"><span class="text-jdm-gold mt-1">✓</span><span>Companion workbooks and ISBE-aligned unit plan available</span></li>
+          <li class="flex items-start gap-2"><span class="text-jdm-gold mt-1">✓</span><span>Companion Activity and Coloring Book + ISBE-aligned unit plan available</span></li>
           <li class="flex items-start gap-2"><span class="text-jdm-gold mt-1">✓</span><span>Author visits and virtual readings bookable through this site</span></li>
+          <li class="flex items-start gap-2"><span class="text-jdm-green mt-1">✓</span><span>Available in the SWAN Library Consortium (100+ Chicago-area member libraries)</span></li>
         </ul>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <a href="https://bws.swanlibraries.net//Record/a3382290" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-jdm-green-light text-jdm-blue-deep font-fredoka font-semibold text-xs uppercase tracking-wider px-3 py-1.5 rounded-full border border-jdm-green/30 hover:bg-white transition">Book 1 in SWAN →</a>
+          <a href="https://bws.swanlibraries.net//Record/a3391285" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-jdm-green-light text-jdm-blue-deep font-fredoka font-semibold text-xs uppercase tracking-wider px-3 py-1.5 rounded-full border border-jdm-green/30 hover:bg-white transition">Book 2 in SWAN →</a>
+        </div>
         <div class="flex flex-wrap gap-3">
           <a href="assets/JD-Marcus-Educator-One-Sheet.pdf" target="_blank" rel="noopener" class="btn-primary px-6 py-3 rounded-full font-fredoka font-semibold text-sm">Download Educator One-Sheet (PDF)</a>
           <a href="#booking" class="btn-outline-white px-6 py-3 rounded-full font-fredoka font-semibold text-sm">Request a School Visit</a>
@@ -660,9 +667,9 @@
 
 <!-- ======= FOOTER ======= -->
 <footer class="bg-jdm-ink text-white">
-  <div class="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-4 gap-10 text-center md:text-left">
+  <div class="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-5 gap-10 text-center md:text-left">
     <div class="md:col-span-2 flex flex-col items-center md:items-start">
-      <img src="assets/title-treatment.png" alt="The Adventures of JD & Marcus" class="h-16 w-auto mb-5">
+      <img src="assets/jd-marcus-logo-primary.png" alt="The Adventures of JD & Marcus" class="h-20 w-auto mb-5">
       <p class="font-nunito text-white/70 text-sm leading-relaxed max-w-sm">Bellwood adventures, neighborhood mysteries, and friendship that finds treasure in plain sight. A children's book series by Jay Davis.</p>
     </div>
     <div>
@@ -676,9 +683,17 @@
       </ul>
     </div>
     <div>
-      <p class="font-fredoka font-semibold text-jdm-gold uppercase tracking-widest text-xs mb-4">Connect</p>
+      <p class="font-fredoka font-semibold text-jdm-green uppercase tracking-widest text-xs mb-4">Follow the Series</p>
       <ul class="space-y-2 font-nunito text-sm">
-        <li><a href="https://www.instagram.com/jaydavisproductions/" target="_blank" rel="noopener" class="text-white/80 hover:text-white transition">Instagram</a></li>
+        <li><a href="https://www.instagram.com/jdandmarcus/" target="_blank" rel="noopener" class="text-white/80 hover:text-white transition">Instagram @jdandmarcus</a></li>
+        <li><a href="https://www.tiktok.com/@jdandmarcus" target="_blank" rel="noopener" class="text-white/80 hover:text-white transition">TikTok @jdandmarcus</a></li>
+        <li><a href="https://www.facebook.com/people/The-Adventures-of-JD-Marcus/61576720182747/" target="_blank" rel="noopener" class="text-white/80 hover:text-white transition">Facebook page</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-fredoka font-semibold text-jdm-gold uppercase tracking-widest text-xs mb-4">Follow Jay</p>
+      <ul class="space-y-2 font-nunito text-sm">
+        <li><a href="https://www.instagram.com/jaydavistp/" target="_blank" rel="noopener" class="text-white/80 hover:text-white transition">Instagram @jaydavistp</a></li>
         <li><a href="https://www.facebook.com/jay.davistp/" target="_blank" rel="noopener" class="text-white/80 hover:text-white transition">Facebook</a></li>
         <li><a href="https://www.threads.com/@jaydavistp" target="_blank" rel="noopener" class="text-white/80 hover:text-white transition">Threads</a></li>
         <li><a href="https://jaydavisfilms.com" target="_blank" rel="noopener" class="text-white/80 hover:text-white transition">Jay Davis Films</a></li>
